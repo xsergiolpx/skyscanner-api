@@ -5,15 +5,16 @@ from scrapper import *
 apikey = "8b389077edmsh58c90253df8b79ap1043d9jsn949bb7116add"
 
 
-destinations = ["CEB", "MNL", "BKK", "HKT", "KUL"]
 # Trip preferences
 min_days = 5
-max_days = 15
-min_outbound_date = "2019-12-18"
+max_days = 14
+min_outbound_date = "2019-07-01"
 max_inbound_date = "2020-01-07"
 
 # Airports
 origin = "AMS"
+destinations = ["CEB", "MNL", "BKK", "HKT", "KUL"]
+
 
 dates_tuples = generate_dates(_min_outbound_date=min_outbound_date,
                               _max_inbound_date=max_inbound_date,
@@ -41,14 +42,10 @@ for destination in destinations:
         all_params.append(params)
 
 
-# Test query
-#test = make_query(_apikey=apikey, params=params, wait_time=1, max_retries=3)
-#print(test)
-
-
 def launch_make_query(_params):
     make_query(_apikey=apikey, params=_params, wait_time=1, max_retries=3)
 
 
+print("Total requests:", len(all_params))
 all_params = np.random.choice(all_params, size=len(all_params))
 Parallel(n_jobs=8, verbose=100)(delayed(make_query)(i) for i in all_params)

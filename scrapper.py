@@ -148,8 +148,7 @@ def make_query(params, _apikey="8b389077edmsh58c90253df8b79ap1043d9jsn949bb7116a
                     list_of_dicts_2_dict_of_lists([flatten_dict(d) for d in list_info_result])).sort_values("price")
                 df_return["query_date"] = str(datetime.datetime.now())
                 df_return.to_parquet('data/' + filename, compression="gzip")
-                return df_return
-                break
+                return 0
 
         except Exception as e:
             print(e)
