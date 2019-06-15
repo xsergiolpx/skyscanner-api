@@ -2,7 +2,7 @@ from joblib import Parallel, delayed
 from scrapper import *
 
 
-apikey = "8b389077edmsh58c90253df8b79ap1043d9jsn949bb7116add"
+apikey = ""
 
 
 # Trip preferences
@@ -16,10 +16,12 @@ origin = "AMS"
 destinations = ["CEB", "MNL", "BKK", "HKT", "KUL"]
 
 
-dates_tuples = generate_dates(_min_outbound_date=min_outbound_date,
-                              _max_inbound_date=max_inbound_date,
-                              _min_days=min_days,
-                              _max_days=max_days)
+dates_tuples = generate_dates(
+    _min_outbound_date=min_outbound_date,
+    _max_inbound_date=max_inbound_date,
+    _min_days=min_days,
+    _max_days=max_days
+)
 
 all_params = []
 for destination in destinations:
