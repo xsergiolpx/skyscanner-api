@@ -116,7 +116,7 @@ def extract_info_leg(one_result, response, bound, prefix=""):
             }
 
 
-def make_query(params, _apikey="8b389077edmsh58c90253df8b79ap1043d9jsn949bb7116add", max_retries=5, wait_time=1):
+def make_query(params, _apikey="", max_retries=5, wait_time=1):
     filename = str(datetime.datetime.now()) + '__'.join([key + '_' + str(params[key]) for key in params]) + '.parquet'
     session_key = get_session(_apikey, params)
     url_results = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/" + session_key + "?sortType=price&sortOrder=asc&pageIndex=0&pageSize=50"
